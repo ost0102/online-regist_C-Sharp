@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HELP-DESK" />
+    <meta property="og:image" content="/Images/og_img.png" />
+    <meta property="og:site_name" content="HELP-DESK" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>    
+    <script src="~/Scripts/API/jquery.datetimepicker.full.js"></script>
+    <script src="~/Scripts/JS/Common.js"></script>
+    <title>HELP-DESK</title>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <header class="header">
+            @{
+                if (Session["EMAIL"] == null)
+                {
+                    <input type="hidden" id="Session_PICNM" value="" />
+                    <input type="hidden" id="Session_TEL" value="" />
+                    <input type="hidden" id="Session_EMAIL" value="" />
+                    <input type="hidden" id="Session_PICID" value="" />
+                    <input type="hidden" id="Session_CUST_CD" value="" />
+                }
+                else
+                {
+                    <input type="hidden" id="Session_PICNM" value="@Session["PIC_NM"]" />
+                    <input type="hidden" id="Session_TEL" value="@Session["TEL_NO"]" />
+                    <input type="hidden" id="Session_EMAIL" value="@Session["EMAIL"]" />
+                    <input type="hidden" id="Session_PICID" value="@Session["PIC_ID"]" />
+                    <input type="hidden" id="Session_CUST_CD" value="@Session["CUST_CD"]" />
+                }
+            }
+            <div class="header__inner">
+                <div class="header__inner--left">
+                    <div class="header__logo">
+                        <a href="/">
+                            <img src="~/Images/logo.png" />
+                        </a>
+                    </div>
+                    <div class="header__title">
+                        <p>온라인접수</p>
+                    </div>
+                </div>
+                <div class="header__menu">
+                    @{
+                        if (ViewBag.MENU1 == "HOME")
+                        {
+                            <a href="/" class="on">메인</a>
+                        }
+                        else
+                        {
+                            <a href="/">메인</a>
+                        }
+                        if (ViewBag.MENU2 == "ONLINE")
+                        {
+                            <a href="/Online" class="on" name="LoginRequired">온라인접수</a>
+                        }
+                        else
+                        {
+                            <a name="LoginRequired">온라인접수</a>
+                        }
+                        if (ViewBag.MENU3 == "FAQ")
+                        {
+                            <a href="/FAQ" class="on">FAQ</a>
+                        }
+                        else
+                        {
+                            <a href="/FAQ">FAQ</a>
+                        }
+                        
+                        <a href="/Notice" class="on">공지사항</a>
+                        
+
+                    }
+                </div>
+                @{
+                    if (Session["CUST_CD"] == null)
+                    {
+                        <div class="header__button">
+                            <button type="button" class="header__button--user">사용자등록</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="header__button">
+                            <div class="login__info">
+                                <img src="~/Images/user_icn.png" /><span id="UserName">@Session["PIC_NM"] 님</span><button type="button" class="header__button--logout" id="Logout">로그아웃</button>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="hamburger" id="hamburger">
+                    <p></p>
+                </div>
+            </div>
+        </header>
+        @RenderSection("container", required: false)
+        <footer>
+            <p>
+                양재아이티㈜ | 서울특별시 금천구 가산디지털2로 123,313호(가산동,월드메르디앙2차) | 고객센터 : 1522-7422 | 팩스 : 02-6918-0679<br />
+                Copyright © Yangjae Information Technology Co., Ltd. All Rights Reserved.
+            </p>
+        </footer>
+        <aside class="mo__menu">
+            <button type="button" id="CloseMenu"></button>
+            <div class="mo__menu-cont">
+                <a href="/Home"><img src="~/Images/logo.png" /></a>
+                @{
+                    if (Session["CUST_CD"] == null)
+                    {
+                        <div class="mo__menu-cont__input">
+                            <input type="text" id="Mo_Id" placeholder="아이디" />
+                            <input type="password" id="Mo_Pwd" placeholder="비밀번호" />
+                        </div>
+                        <div class="mo__menu-cont__button">
+                            <button type="button" id="Mo_Login">로그인</button>
+                            <button type="button">사용자등록</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mo__menu-cont__login__info">
+                            <img src="~/Images/user_icn.png" /><span id="Mo_UserName">@Session["PIC_NM"] 님</span><button type="button" id="Mo_Logout" class="logout">로그아웃</button>
+                        </div>
+                    }
+                }
+                <div class="mo__menu-cont__menu">
+                    @{
+                        if (ViewBag.MENU1 == "HOME")
+                        {
+                            <a href="/" class="on">메인</a>
+                        }
+                        else
+                        {
+                            <a href="/">메인</a>
+                        }
+                        if (ViewBag.MENU2 == "ONLINE")
+                        {
+                            <a href="/Online" class="on" name="LoginRequired">온라인접수</a>
+                        }
+                        else
+                        {
+                            <a name="LoginRequired">온라인접수</a>
+                        }
+                        if (ViewBag.MENU3 == "FAQ")
+                        {
+                            <a href="/FAQ" class="on">FAQ</a>
+                        }
+                        else
+                        {
+                            <a href="/FAQ">FAQ</a>
+                        }
+                            <a href="/Notice" class="on">공지사항</a>
+                        
+                    }
+                </div>
+            </div>
+        </aside>
+
+        <div class="layer_zone" id="LoginPop">
+            <div class="layer_wrap">
+                <div class="layer_inwrap">
+                    <div class="layer_cont">
+                        <div class="alert_cont">
+                            <div class="inner">
+                                <div class="inner-header">
+                                    <p>로그인</p>
+                                    <button type="button" name="CloseLayer"></button>
+                                </div>
+                                <div class="login__input">
+                                    <div class="input__box">
+                                        <input type="text" id="UserId" placeholder="아이디" />
+                                    </div>
+                                    <div class="input__box">
+                                        <input type="password" id="UserPwd" placeholder="비밀번호" />
+                                    </div>
+                                </div>
+                                <div class="login__btn">
+                                    <button type="button" id="Login">Login</button>
+                                </div>
+                                <a href="/Join">사용자 등록</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

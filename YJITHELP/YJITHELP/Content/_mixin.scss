@@ -1,0 +1,19 @@
+﻿@import "./variables";
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+    @media (min-width: #{$breakpoint-mobile + 1px}) and (max-width: #{$breakpoint-tablet}) {
+        @content;
+    }
+}
+
+@mixin etc {
+  @media (min-width: #{$breakpoint-mobile + 1px}) and (max-width: #{$breakpoint-etc}) {
+    @content;
+  }
+}

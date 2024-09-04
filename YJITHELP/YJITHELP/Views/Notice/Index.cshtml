@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Container{
+    @* 1300px *@
+    <div class="container">
+        <section class="notice-section1">
+            <div class="notice-contents__header">
+                <p>공지사항</p>
+                <div class="notice-search">
+                    <select id="select_Notice">
+                        <option value="">전체</option>
+                        <option value="T">제목</option>
+                        <option value="C">내용</option>
+                    </select>
+                    <input type="text" id="input_Notice" placeholder="검색하세요" />
+                    <button type="button" class="search_btn" id="btn_Search">
+                        <img src="~/Images/icn_search2.png" />
+                    </button>
+                </div>
+            </div>
+            <div class="notice-contents__body">
+                <div class="notice-contents__body__header">
+                    <p>제목</p>
+                    <p>작성자</p>
+                    <p>등록일</p>
+                </div>
+                <div class="notice-contents__body__body">
+                </div>
+                <div class="no_data" id="NoData" style="text-align:center; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-size:16px;">
+                    등록된 자료가 없습니다.
+                </div>
+            </div>
+        </section>
+
+        <section class="home-section section3" style="padding-top:2rem;">
+            <div class="home-section__title">
+                <p>시스템 장애<br /> 비상연락망</p>
+                <p class="home-section__title__sub">평일 9:00 - 18:00<br />온라인 접수를 남겨주세요</p>
+            </div>
+            <div class="home-section--cont">
+                <div class="home-section--cont__box">
+                    <div class="section3__link__box">
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title blue">
+                                    <p>대표번호</p>
+                                    <p>1522-7422</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>해상, 항공EDI, 계산서</p>
+                                    <p>010-9509-7422</p>
+                                    <p>운영팀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section3__link__box">
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>해상, 항공EDI, 계산서</p>
+                                    <p>010-9525-7422</p>
+                                    <p>FMS개발팀</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>창고, 운송, CFS</p>
+                                    <p>010-9511-7422</p>
+                                    <p>TWMS개발팀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/Scripts/JS/Notice/Notice.js"></script>
+}

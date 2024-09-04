@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HELP-DESK" />
+    <meta property="og:image" content="/Images/og_img.png" />
+    <meta property="og:site_name" content="HELP-DESK" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>    
+    <script src="~/Scripts/API/jquery.datetimepicker.full.js"></script>
+    <script src="~/Scripts/JS/Common.js"></script>
+    <title>HELP-DESK</title>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <header class="header">
+            @{
+                if (Session["EMAIL"] == null)
+                {
+                    <input type="hidden" id="Session_PICNM" value="" />
+                    <input type="hidden" id="Session_TEL" value="" />
+                    <input type="hidden" id="Session_EMAIL" value="" />
+                    <input type="hidden" id="Session_PICID" value="" />
+                    <input type="hidden" id="Session_CUST_CD" value="" />
+                }
+                else
+                {
+                    <input type="hidden" id="Session_PICNM" value="@Session["PIC_NM"]" />
+                    <input type="hidden" id="Session_TEL" value="@Session["TEL_NO"]" />
+                    <input type="hidden" id="Session_EMAIL" value="@Session["EMAIL"]" />
+                    <input type="hidden" id="Session_PICID" value="@Session["PIC_ID"]" />
+                    <input type="hidden" id="Session_CUST_CD" value="@Session["CUST_CD"]" />
+                }
+            }
+            <div class="header__inner">
+                <div class="header__inner--left">
+                    <div class="header__logo">
+                        <a href="/">
+                            <img src="~/Images/logo.png" />
+                        </a>
+                    </div>
+                    <div class="header__title">
+                        <p>온라인접수</p>
+                    </div>
+                </div>
+                <div class="header__menu">
+                    @{
+                        if (ViewBag.MENU1 == "HOME")
+                        {
+                            <a href="/" class="on">메인</a>
+                        }
+                        else
+                        {
+                            <a href="/">메인</a>
+                        }
+                        if (ViewBag.MENU2 == "ONLINE")
+                        {
+                            <a href="/Online" class="on" name="LoginRequired">온라인접수</a>
+                        }
+                        else
+                        {
+                            <a name="LoginRequired">온라인접수</a>
+                        }
+                        if (ViewBag.MENU3 == "FAQ")
+                        {
+                            <a href="/FAQ" class="on">FAQ</a>
+                        }
+                        else
+                        {
+                            <a href="/FAQ">FAQ</a>
+                        }
+                        if(ViewBag.MENU4 == "Notice") 
+                        {
+                            <a href="/Notice" class="on">공지사항</a>
+                        }
+                        else
+                        {
+                            <a href="/Notice">공지사항</a>
+                        }
+                    }
+                </div>
+                @{
+                    if (Session["CUST_CD"] == null)
+                    {
+                        <div class="header__button">
+                            <button type="button" class="header__button--user">사용자등록</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="header__button">
+                            <div class="login__info">
+                                <img src="~/Images/user_icn.png" /><span id="UserName">@Session["PIC_NM"] 님</span><button type="button" class="header__button--logout" id="Logout">로그아웃</button>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="hamburger" id="hamburger">
+                    <p></p>
+                </div>
+            </div>
+        </header>
+        @RenderSection("container", required: false)
+    </div>
+    <footer>
+        <p>
+            양재아이티㈜ | 서울특별시 금천구 가산디지털2로 123,313호(가산동,월드메르디앙2차) | 고객센터 : 1522-7422 | 팩스 : 02-6918-0679<br />
+            Copyright © Yangjae Information Technology Co., Ltd. All Rights Reserved.
+        </p>
+    </footer>
+
+    <aside class="mo__menu">
+        <button type="button" id="CloseMenu"></button>
+        <div class="mo__menu-cont">
+            <a href="/Home"><img src="~/Images/logo.png" /></a>
+            @{
+                if (Session["CUST_CD"] == null)
+                {
+                    <div class="mo__menu-cont__input">
+                        <input type="text" id="Mo_Id" placeholder="아이디" />
+                        <input type="password" id="Mo_Pwd" placeholder="비밀번호" />
+                    </div>
+                    <div class="mo__menu-cont__button">
+                        <button type="button" id="Mo_Login">로그인</button>
+                        <button type="button">사용자등록</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="mo__menu-cont__login__info">
+                        <img src="~/Images/user_icn.png" /><span id="Mo_UserName">@Session["PIC_NM"] 님</span><button type="button" id="Mo_Logout" class="logout">로그아웃</button>
+                    </div>
+                }
+            }
+        <div class="mo__menu-cont__menu">
+            @{
+                if (ViewBag.MENU1 == "HOME")
+                {
+                    <a href="/" class="on">메인</a>
+                }
+                else
+                {
+                    <a href="/">메인</a>
+                }
+                if (ViewBag.MENU2 == "ONLINE")
+                {
+                    <a href="/Online" class="on" name="LoginRequired">온라인접수</a>
+                }
+                else
+                {
+                    <a name="LoginRequired">온라인접수</a>
+                }
+                if (ViewBag.MENU3 == "FAQ")
+                {
+                    <a href="/FAQ" class="on">FAQ</a>
+                }
+                else
+                {
+                    <a href="/FAQ">FAQ</a>
+                }
+                if (ViewBag.MENU4 == "Notice")
+                {
+                    <a href="/Notice" class="on">공지사항</a>
+                }
+                else
+                {
+                    <a href="/Notice">공지사항</a>
+                }
+            }
+        </div>
+        </div>
+    </aside>
+
+    <div class="layer_zone" id="LoginPop">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="alert_cont">
+                        <div class="inner">
+                            <div class="inner-header">
+                                <p>로그인</p>
+                                <button type="button" name="CloseLayer"></button>
+                            </div>
+                            <div class="login__input">
+                                <div class="input__box">
+                                    <input type="text" id="UserId" placeholder="아이디" />
+                                </div>
+                                <div class="input__box">
+                                    <input type="password" id="UserPwd" placeholder="비밀번호" />
+                                </div>
+                            </div>
+                            <div class="login__btn">
+                                <button type="button" id="Login">Login</button>
+                            </div>
+                            <a href="/Join">사용자 등록</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone" id="alert01" style="z-index:2;">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="alert_cont">
+                        <div class="inner">
+                            <p></p>
+                            <div class="confirm">
+                                <button type="button" name="CloseLayer">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone" id="alert03" style="z-index:2;">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="alert_cont">
+                        <div class="inner">
+                            <p></p>
+                            <div class="confirm">
+                                <button type="button" name="CloseLayer">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone" id="alert02" style="z-index:2;">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="alert_cont">
+                        <div class="inner">
+                            <p></p>
+                            <div class="confirm">
+                                <button type="button" id="CloseLayer2">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer_zone" id="Regist">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <div class="layer_cont">
+                    <div class="alert_cont">
+                        <div class="layer__popup__inner">
+                            <div class="layer__popup-header">
+                                <p class="layer__title">신규등록</p>
+                                <button type="button" id="R_CloseLayer"></button>
+                            </div>
+                            <div clss="layer__popup-body">
+                                <div class="layer__popup-body__list">
+                                    <div class="input__list division">
+                                        <input name='MNGT_NO' value='' style='position:absolute; visibility:hidden;' />
+                                        <div class="input__box">
+                                            <span>담당자</span>
+                                            <input type="text" id="R_OP_CD" value="@Session["PIC_NM"]" />
+                                            <button type="button"></button>
+                                        </div>
+                                        <div class="input__box">
+                                            <span>전화번호</span>
+                                            <input type="text" id="R_HpNum" maxlength="13" value="@Session["TEL_NO"]" />
+                                            <button type="button"></button>
+                                        </div>
+                                    </div>
+                                    <div class="input__list orphan">
+                                        <div class="input__box">
+                                            <span>이메일</span>
+                                            <input type="text" id="R_EMAIL" value="@Session["EMAIL"]" />
+                                            <button type="button"></button>
+                                        </div>
+                                    </div>
+                                    <div class="input__list division">
+                                        <div class="input__box">
+                                            <span>업무구분</span>
+                                            <select id="R_REQ_SVC">
+                                                <option>기초관리</option>
+                                                <option>오더관리</option>
+                                                <option>해운업무</option>
+                                                <option>항공업무</option>
+                                                <option>회계업무</option>
+                                                <option>EDI</option>
+                                                <option>공통업무</option>
+                                                <option>교육</option>
+                                                <option>문서관리</option>
+                                                <option>창고업무</option>
+                                                <option>운송업무</option>
+                                                <option>장애대응</option>
+                                                <option>기타</option>
+                                                <option>이벤트</option>
+                                                <option>CS</option>
+                                                <option>PRIME</option>
+                                                <option>전자결재</option>
+                                            </select>
+                                        </div>
+                                        <div class="input__box">
+                                            <span style="visibility:hidden;">.</span>
+                                            <select id="R_REQ_SVC2">
+                                                @* 오더관리 *@
+                                            </select>
+                                            @*<select> 해운업무
+                                                    <option>입력</option>
+                                                    <option>출력</option>
+                                                    <option>정산</option>
+                                                    <option>실적</option>
+                                                    <option>전자결재</option>
+                                                    <option>프로젝트</option>
+                                                    <option>해운수출</option>
+                                                    <option>해운수출FCL</option>
+                                                    <option>해운수출LCL</option>
+                                                    <option>해운수입(FCL)/프로젝트</option>
+                                                    <option>해운수입(FCL)</option>
+                                                    <option>해운수출(FCL)/프로젝트</option>
+                                                </select>*@
+
+                                            @*<select> 항공업무
+                                                    <option>입력</option>
+                                                    <option>출력</option>
+                                                    <option>정산</option>
+                                                    <option>실적</option>
+                                                    <option>항공수입</option>
+                                                    <option>항공수출</option>
+                                                </select>*@
+
+                                            @*<select> 회계업무
+                                                    <option>매출관리</option>
+                                                    <option>전자결재</option>
+                                                    <option>고정자산관리</option>
+                                                    <option>ELVIS-BILL</option>
+                                                    <option>매입관리</option>
+                                                    <option>전표관리</option>
+                                                    <option>원장관리</option>
+                                                    <option>결산관리</option>
+                                                    <option>부가세신고</option>
+                                                    <option>기초관리</option>
+                                                    <option>재무회계</option>
+                                                    <option>정산</option>
+                                                    <option>해외정산</option>
+                                                    <option>회계</option>
+                                                </select>*@
+
+                                            @*<select> EDI
+                                                    <option>적하목록</option>
+                                                    <option>적하정정</option>
+                                                    <option>AMS</option>
+                                                    <option>D/O,하기신고</option>
+                                                    <option>AFR</option>
+                                                    <option>E-S/R</option>
+                                                    <option>외부I/F</option>
+                                                    <option>1.해운(개발팀,확인예정)</option>
+                                                    <option>2.항공(개발팀,확인예정)</option>
+                                                </select>*@
+
+                                            @*<select> 공통업무
+                                                    <option>로그인</option>
+                                                    <option>서버</option>
+                                                    <option>DATA 이관</option>
+                                                    <option>홈페이지</option>
+                                                    <option>기타</option>
+                                                    <option>실적</option>
+                                                    <option>기초</option>
+                                                    <option>출력</option>
+                                                    <option>정산</option>
+                                                    <option>입력</option>
+                                                </select>*@
+
+                                            @*<select> 장애대응
+                                                    <option>서버</option>
+                                                    <option>EDI</option>
+                                                    <option>기타</option>
+                                                </select>*@
+
+                                            @*<select> 기타
+                                                    <option>기타</option>
+                                                    <option>CRM</option>
+                                                    <option>기초코드</option>
+                                                </select>*@
+
+                                            @*<select> 이벤트
+                                                    <option>기타</option>
+                                                    <option>CRM</option>
+                                                    <option>기초코드</option>
+                                                </select>*@
+
+                                            @*<select> CS
+                                                    <option>기타</option>
+                                                    <option>CRM</option>
+                                                    <option>기초코드</option>
+                                                </select>*@
+
+                                            @*<select> PRIME
+                                                    <option>E-Service</option>
+                                                    <option>홈페이지</option>
+                                                    <option>ELVIS(Prime)</option>
+                                                    <option>e-Biz(구버전)</option>
+                                                    <option>RPA</option>
+                                                    <option>기타</option>
+                                                </select>*@
+
+                                            @*<select> 전자결재
+                                                    <option>전재결재(엘비스)</option>
+                                                </select>*@
+                                        </div>
+                                    </div>
+                                    <div class="input__list orphan">
+                                        <div class="input__box">
+                                            <span>제목</span>
+                                            <input type="text" id="R_SUBJECT" />
+                                            <button type="button"></button>
+                                        </div>
+                                    </div>
+                                    <div class="input__list orphan">
+                                        <div class="input__box">
+                                            <span style="position:relative; top:-5px;">내용</span>
+                                            <textarea id="R_CONTENTS"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="input__list orphan">
+                                        <div class="input__box">
+                                            <span>파일업로드</span>
+                                            <input class="upload-name" value="첨부파일" id="R_FILE_ATTACH" placeholder="첨부파일" disabled>
+                                            @*<input class="upload-name" value="" id="FILE_NAME" placeholder="">*@
+                                            <label for="r_file-uploader" style="cursor:pointer;">파일찾기</label>
+                                            <input type="file" id="r_file-uploader" multiple>
+                                        </div>
+                                    </div>
+                                    <div class="input__list orphan">
+                                        <div class="input__box" style="align-items:flex-start;">
+                                            <span style="position:relative; top:10px;">파일리스트</span>
+                                            <div class="file__list__box">
+                                                <div class="file__list">
+                                                    <div id="R_GridFile">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layer__popup-body__button">
+                                    <div class="button__list">
+                                        <button type="button" id="R_btnSave">저장</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="ProgressBar_Loading" style="display:none">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+        </div>
+    </div>
+</body>
+</html>
+

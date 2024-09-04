@@ -1,0 +1,387 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Container{
+    @* 1300px *@
+    <div class="container">
+        <div class="page__title">
+            <p>FAQ</p>
+        </div>
+        <section class="faq-section1">
+            <div class="tab-section">
+                <div class="tab-section-cont">
+                    <div class="tab on">
+                        <p >해운</p>
+                        <input type="hidden" id="tabSea" value="G1903080004">
+                    </div>
+                    <div class="tab">
+                        <p>항공</p>
+                        <input type="hidden" id="tabAir" value="G1903080002">
+                    </div>
+                    <div class="tab">
+                        <p>회계</p>
+                        <input type="hidden" id="tabINV" value="G1903080001">
+                    </div>
+                    <div class="tab">
+                        <p>EDI</p>
+                        <input type="hidden" id="tabEDI" value="G1903080008">
+                    </div>
+                </div>
+                <div class="tab-section-cont">
+                    <div class="tab">
+                        <p>정산</p>
+                        <input type="hidden" id="tabBill" value="G2107050032">
+                    </div>
+                    <div class="tab">
+                        <p>기초</p>
+                        <input type="hidden" id="tabStand" value="G1903080003">
+                    </div>
+                    <div class="tab">
+                        <p>보세창고</p>
+                        <input type="hidden" id="tabWare" value="G2202070001">
+                    </div>
+                    <div class="tab">
+                        <p>운송</p>
+                        <input type="hidden" id="tabTrans" value="G2203040002">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="faq-section2">
+            <!--<div class="faq-contents" name="">
+                <div class="faq-contents__header">
+                    <p>해운</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">-->
+                        @*<div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                            </div>
+                        </div>*@
+                    <!--</div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>항공</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>회계</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>EDI</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>정산</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>기초</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>보세창고</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-contents" style="display:none;">
+                <div class="faq-contents__header">
+                    <p>운송</p>
+                    <div class="faq-search">
+                        <input type="text" placeholder="검색하세요" />
+                    </div>
+                </div>
+                <div class="faq-contents__body">
+                    <div class="faq-cont">
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                        <div class="faq-cont__list">
+                            <div class="faq__list__title">
+                                <p>MAWB 삭제는 어떻게 하나요?</p>
+                                <button type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </section>
+        <section class="home-section section3" style="padding-top:0;">
+            <div class="home-section__title">
+                <p>시스템 장애<br /> 비상연락망</p>
+                <p class="home-section__title__sub">평일 9:00 - 18:00<br />온라인 접수를 남겨주세요</p>
+            </div>
+            <div class="home-section--cont">
+                <div class="home-section--cont__box">
+                    <div class="section3__link__box">
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title blue">
+                                    <p>대표번호</p>
+                                    <p>1522-7422</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>해상, 항공EDI, 계산서</p>
+                                    <p>010-9509-7422</p>
+                                    <p>운영팀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section3__link__box">
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>해상, 항공EDI, 계산서</p>
+                                    <p>010-9525-7422</p>
+                                    <p>FMS개발팀</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="link__box section3">
+                            <div class="link__box-cont">
+                                <div class="link__box-cont__title black">
+                                    <p>창고, 운송, CFS</p>
+                                    <p>010-9511-7422</p>
+                                    <p>TWMS개발팀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/Scripts/JS/FAQ/FAQ.js"></script>
+}
